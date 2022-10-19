@@ -36,3 +36,12 @@ Route::get('/name/{name}', function ($name) {
 Route::get('/nama/{nama}/{nrp}', function ($nama,$nrp) {
     return "Nama " . $nama . "<br>" . "NRP " . $nrp ;
 })->where('nama', '[A-Za-z]+') ->where('nrp', '[0-9]+') ;
+
+//Route Controller
+Route::get('/person','PersonController@index');
+
+//Parsing Data
+Route::get('/person/show/{param}','PersonController@show');
+
+//Pemanggilan Resource Controller
+Route::resource('/student','StudentController');
