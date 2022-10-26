@@ -45,3 +45,17 @@ Route::get('/person/show/{param}','PersonController@show');
 
 //Pemanggilan Resource Controller
 Route::resource('/student','StudentController');
+
+//Route View Home.blade
+Route::get('/homepage', function () {
+    return view('home');
+});
+
+//Route View Home.blade Parsing Data
+Route::get('/homepage', function () {
+    return view('home', ["name" => "Alexander S. M"]);
+});
+
+Route::get('/person/sendData','PersonController@sendData');
+
+Route::get('/person/data','PersonController@data');
