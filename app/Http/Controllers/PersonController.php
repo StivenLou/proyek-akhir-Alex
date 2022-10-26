@@ -7,8 +7,14 @@ use Illuminate\Http\Request;
 class PersonController extends Controller
 {
     //Membuat attribute Name
-    private $nrp;
-    private $name;
+    private $nrp = '191014034';
+    private $name = 'Alexander S. M';
+    private $course = 'P WEB 2';
+    private $task;
+    private $quiz;
+    private $mid_term;
+    private $final;
+    private $grade;
 
     //Membuat Method Index
     public function index() {
@@ -37,15 +43,25 @@ class PersonController extends Controller
         return view("person.data", ['names' => $names]);
     }
 
-    //method dengan 2 argumen
-    public function data() {
-        $code = ["191014034"];
-        $names = ["Alexander Steven Marselinus"];
-        $course = ["Alexander Steven Marselinus"];
-        $names = ["Alexander Steven Marselinus"];
-        $names = ["Alexander Steven Marselinus"];
-        $names = ["Alexander Steven Marselinus"];
+    // method dengan 2 argumen
+    public function myCourse($task, $quiz, $mid_term, $final) {
+        $this->task = $task;
+        $this->quiz = $quiz;
+        $this->mid_term = $mid_term;
+        $this->final = $final;
+        $grade = $this->calculateGrade();
 
-        return view("person.data", ['names' => $names]);
+        return view('person.my-academic', compact('task', 'quiz', 'grade', 'mid_term', 'final'));
+    }
+
+    protected $casts = [
+        'grade' => 'double',
+    ];
+
+    // kalkulasi
+    private function calculateGrade() {
+        $grade = (($this->task * 0.1) + ($this->quiz * 0.1) + ($this->mid_term * 0.3) + ($this->final * 0.5));
+
+        return $grade;
     }
 }

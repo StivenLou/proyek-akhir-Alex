@@ -59,3 +59,5 @@ Route::get('/homepage', function () {
 Route::get('/person/sendData','PersonController@sendData');
 
 Route::get('/person/data','PersonController@data');
+
+Route::get('/person/my-academic/{task}/{quiz}/{mid_term}/{final}/','PersonController@myCourse');
