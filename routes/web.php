@@ -38,7 +38,7 @@ Route::get('/nama/{nama}/{nrp}', function ($nama,$nrp) {
 })->where('nama', '[A-Za-z]+') ->where('nrp', '[0-9]+') ;
 
 //Route Controller
-Route::get('/person','PersonController@index');
+Route::get('/person','PersonController@index')->name('person.index');
 
 //Parsing Data
 Route::get('/person/show/{param}','PersonController@show');
