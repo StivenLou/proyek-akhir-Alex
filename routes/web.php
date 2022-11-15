@@ -65,3 +65,9 @@ Route::get('/person/my-academic/{task}/{quiz}/{mid_term}/{final}/','PersonContro
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('person/create', 'PersonController@create')->name('person.create');
+
+Route::post('person/store', 'PersonController@store')->name('person.store');
+
+
