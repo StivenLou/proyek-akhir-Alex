@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Student;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,4 +71,16 @@ Route::get('person/create', 'PersonController@create')->name('person.create');
 
 Route::post('person/store', 'PersonController@store')->name('person.store');
 
+Route::get('student/index', function() {
+    // Eloquen ORM untuk Select All Data
+    $students = Student::all();
 
+    // Memecah Object students ke dalam student
+    foreach($students as $student) {
+        echo "<br />Nama : ". $student->name;
+        echo "<br />NRP : ". $student->code;
+        echo "<br />Kelas : ". $student->group;
+    }
+});
+
+Route::get('student/index','StudentController@index');
